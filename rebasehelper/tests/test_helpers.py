@@ -74,6 +74,7 @@ class TestGitHelper(object):
 
                 config_file = os.path.join(work_git_path, 'config')
                 self.write_config_file(config_file, name, email)
+                os.environ['HOME'] = workdir
                 os.environ['XDG_CONFIG_HOME'] = workdir
             elif config == 'global_include':
                 work_git_path = os.path.join(workdir, 'git')
@@ -85,6 +86,7 @@ class TestGitHelper(object):
                             '    path = included_config\n')
                 included_config_file = os.path.join(work_git_path, 'included_config')
                 self.write_config_file(included_config_file, name, email)
+                os.environ['HOME'] = workdir
                 os.environ['XDG_CONFIG_HOME'] = workdir
             elif config == 'local':
                 repo = git.Repo.init(workdir)
